@@ -1,14 +1,21 @@
 <main>
-  <section>
+  <section class="form-section">
     <img src="/assets/svg/logo.svg"/>
-    <h2></h2>
-    <button></button>
-    <div>
-      <span>ou</span>
+    <h2>{{ title }}</h2>
+    <ng-content></ng-content>
+    <div class="btn-wrapper">
+      <app-button [text]="'Entrar'" type="primary" size="large"></app-button>
     </div>
-    <button></button>
+    <div class="divider">
+      <div></div>
+      <span>ou</span>
+      <div></div>
+    </div>
+    <div class="btn-wrapper">
+    <app-button [text]="'Cadastrar conta'" type="secondary" size="large"></app-button>
+  </div>
   </section>
-  <section>
-    <img src="/assets/svg/login-illustration.svg"/>
+  <section class="main-section">
+    <img style="width: 700px; margin: 92px 0;" src="/assets/svg/login-illustration.svg"/>
   </section>
 </main>
