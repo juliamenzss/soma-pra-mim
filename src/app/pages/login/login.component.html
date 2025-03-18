@@ -1,1 +1,26 @@
-<app-default-login-layout></app-default-login-layout>
+<app-default-login-layout
+  title="Que bom que você voltou!"
+  subtitle="Acesse sua conta"
+  (submit)="onSubmit()"
+  (navigate)="onNavigate()"
+  [disablePrimaryBtn]="!loginForm.valid"
+  >
+  <form [formGroup]="loginForm">
+    <app-primary-input
+      formControlName="email"
+      inputName="email"
+      placeholder="Digite seu e-mail"
+      type="email"
+      label="E-mail">
+    </app-primary-input>
+
+    <app-primary-input
+      formControlName="password"
+      inputName="password"
+      placeholder="Digite sua senha"
+      type="password"
+      label="Senha">
+    </app-primary-input>
+    <span>Esqueceu sua senha?</span>
+  </form>
+</app-default-login-layout>

@@ -1,3 +1,4 @@
-<button class="btn" [ngClass]="['btn-' + type, 'btn-' + size]">
+<button class="btn" (click)="onClick()" [disabled]="disablePrimaryBtn" [ngClass]="['btn-' + type, 'btn-' + size]">
   {{ text }}
 </button>
+

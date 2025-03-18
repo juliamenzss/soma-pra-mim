@@ -8,12 +8,16 @@
   cursor: pointer;
   transition: 0.2s ease-in-out;
 
+  &:disabled {
+    opacity: 0.8;
+  }
+
   &.btn-primary {
-    background-color: $primary-color;
+    background-color: $secondary-color;
     color: white;
 
     &.btn-primary:hover{
-      background-color: $secondary-color;
+      background-color: $primary-color;
     }
   }
 
