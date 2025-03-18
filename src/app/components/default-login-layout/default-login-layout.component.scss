@@ -38,12 +38,6 @@ main {
 
     }
     .btn-wrapper {
-      // width: 100%;
-      // display: flex;
-      // flex-direction: row;
-      // align-items: center;
-      // justify-content: center;
-      // margin-bottom: 50px;
       padding: 12px 0;
       }
 
@@ -60,7 +54,7 @@ main {
         text-transform: uppercase;
 
         div{
-          flex-grow: 1;
+          flex-grow: 0.3;
           height: 1.2px;
           background-color: $gray-color;
         }
