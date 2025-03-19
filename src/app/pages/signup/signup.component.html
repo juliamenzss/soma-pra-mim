@@ -1,0 +1,36 @@
+<app-default-login-layout
+  title="Hey! Estávamos esperando por você!"
+  subtitle="Cadastre sua conta agora"
+  (submit)="onSubmit()"
+  (navigate)="onNavigate()"
+  [disablePrimaryBtn]="!signupForm.valid"
+  >
+  <form [formGroup]="signupForm">
+    <app-primary-input
+    formControlName="name"
+    inputName="name"
+    placeholder="Digite seu nome"
+    type="text"
+    label="Nome">
+  </app-primary-input>
+    <app-primary-input
+      formControlName="email"
+      inputName="email"
+      placeholder="Digite seu e-mail"
+      type="email"
+      label="E-mail">
+    </app-primary-input>
+    <app-primary-input
+    formControlName="password"
+    inputName="password"
+    type="password"
+    label="Senha">
+  </app-primary-input>
+    <app-primary-input
+      formControlName="passwordConfirm"
+      inputName="passwordConfirm"
+      type="password"
+      label="Confirme sua senha">
+    </app-primary-input>
+  </form>
+</app-default-login-layout>
