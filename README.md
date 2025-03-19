@@ -19,7 +19,7 @@ SomaPraMim é uma aplicação para facilitar a soma rápida de produtos no merca
 ```bash
 npm install
 
-## Para rodar o projeto em desenvolvimento use:
+- Para rodar o projeto em desenvolvimento use:
 
 ```bash
 ng serve
