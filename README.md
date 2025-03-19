@@ -12,6 +12,12 @@ SomaPraMim é uma aplicação para facilitar a soma rápida de produtos no merca
 - **TypeScript**  
 - **SCSS** 
 
+## 📌 Status do Projeto  
+Atualmente, o projeto conta com:  
+✅ Página de Login e Cadastro  
+✅ Construção de rotas  
+✅ Desenvolvimento de services para comunicação com a API  
+
 ## 📦 Como rodar o projeto  
 
 ### Instalar as dependências  
