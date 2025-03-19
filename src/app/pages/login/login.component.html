@@ -1,8 +1,9 @@
 <app-default-login-layout
-  title="Que bom que você voltou!"
-  subtitle="Acesse sua conta"
-  (submit)="onSubmit()"
-  (navigate)="onNavigate()"
+  title="Vamos começar!"
+  subtitle="Entre com suas credenciais e acesse sua conta"
+  (submit)="handleSubmit()"
+  (navigate)="handleNavigate()"
+
   [disablePrimaryBtn]="!loginForm.valid"
   >
   <form [formGroup]="loginForm">
@@ -21,6 +22,6 @@
       type="password"
       label="Senha">
     </app-primary-input>
-    <span>Esqueceu sua senha?</span>
+    <span class="forgot-password">Esqueceu sua senha?</span>
   </form>
 </app-default-login-layout>

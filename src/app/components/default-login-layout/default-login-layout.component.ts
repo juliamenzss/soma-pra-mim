@@ -16,11 +16,11 @@ export class DefaultLoginLayoutComponent {
   @Output("submit") submit = new EventEmitter();
   @Output("navigate") navigate = new EventEmitter();
 
-  onSubmit() {
+  handlePrimaryCLick() {
     this.submit.emit();
   }
 
-  onNavigate() {
+  handleSecondaryCLick() {
     this.navigate.emit();
   }
 }

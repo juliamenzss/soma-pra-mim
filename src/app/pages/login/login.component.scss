@@ -8,10 +8,15 @@ form {
   margin: 12px 0 24px 0;
 
 
-  span{
+  .forgot-password{
     font-size: 14px;
     text-decoration: underline;
     color: $secondary-color;
     text-align: end;
+    transition: color 0.3s;
+    cursor: pointer;
+  }
+  .forgot-password:hover {
+    color: $text-color;
   }
 }

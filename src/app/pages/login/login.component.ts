@@ -3,8 +3,9 @@ import { DefaultLoginLayoutComponent } from '../../components/default-login-layo
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PrimaryInputComponent } from '../../components/ui/primary-input/primary-input.component';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';
+import { LoginService } from '../../services/auth/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { ButtonService } from '../../services/ui/button.service';
 
 interface LoginForm {
   email: FormControl,
@@ -29,6 +30,7 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private loginService: LoginService,
+    private buttonService: ButtonService,
     private toastService: ToastrService
   ) {
     this.loginForm = new FormGroup({
@@ -37,14 +39,19 @@ export class LoginComponent {
     });
   }
 
-  onSubmit() {
+  ngOnInit(){
+    this.buttonService.setLoginText();
+  }
+
+  handleSubmit() {
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
       next: () => this.toastService.success("Login efetuado com sucesso!"),
       error: () => this.toastService.error("Erro não esperado! Tente novamente!")
     })
   }
 
-  onNavigate() {
-    this.router.navigate(["signup"]);
+  handleNavigate() {
+    const route = this.buttonService.navigateRouteSubject.getValue();
+    this.router.navigate([route]);
   }
 }

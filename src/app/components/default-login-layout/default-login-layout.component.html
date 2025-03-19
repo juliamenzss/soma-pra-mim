@@ -1,12 +1,20 @@
 <main>
   <section class="form-section">
-    <img style="width: 140px;" src="/assets/svg/logo.svg"/>
+
+    <div class="container-arrow">
+      <span class="arrow">
+        <img style="width: 24px;" src="/assets/svg/arrow.svg"/>
+      </span>
+    </div>
     <h2>{{ title }}</h2>
-    <h2>{{ subtitle }}</h2>
+    <h3>{{ subtitle }}</h3>
     <ng-content></ng-content>
 
     <div class="btn-wrapper">
-      <app-button [text]="'Entrar'" type="primary" size="large" (submit)="onSubmit()" [disablePrimaryBtn]="disablePrimaryBtn"></app-button>
+      <app-button
+      type="primary"
+      size="large"
+      (submit)="handlePrimaryCLick()" [disablePrimaryBtn]="disablePrimaryBtn"></app-button>
     </div>
     <div class="divider">
       <div></div>
@@ -14,7 +22,14 @@
       <div></div>
     </div>
     <div class="btn-wrapper">
-    <app-button [text]="'Cadastrar conta'" type="secondary" size="large" (navigate)="onNavigate()"></app-button>
+
+    <app-button
+    type="secondary"
+    size="large"
+    [disablePrimaryBtn]="false"
+    (navigate)="handleSecondaryCLick()"
+    >
+  </app-button>
   </div>
   </section>
   <section class="main-section">
