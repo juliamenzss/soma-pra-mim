@@ -3,8 +3,10 @@ import { DefaultLoginLayoutComponent } from '../../components/default-login-layo
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PrimaryInputComponent } from '../../components/ui/primary-input/primary-input.component';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';
+import { LoginService } from '../../services/auth/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { ButtonService } from '../../services/ui/button.service';
+import { SignupService } from '../../services/auth/signup.service';
 
 interface SignupForm {
   name: FormControl,
@@ -14,7 +16,7 @@ interface SignupForm {
 }
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-signup',
   imports: [
     DefaultLoginLayoutComponent,
     ReactiveFormsModule,
@@ -30,7 +32,8 @@ export class SignupComponent {
 
   constructor(
     private router: Router,
-    private loginService: LoginService,
+    private signupService: SignupService,
+    private buttonService: ButtonService,
     private toastService: ToastrService
   ) {
     this.signupForm = new FormGroup({
@@ -41,14 +44,31 @@ export class SignupComponent {
     });
   }
 
-  onSubmit() {
-    this.loginService.login(this.signupForm.value.email, this.signupForm.value.password).subscribe({
-      next: () => this.toastService.success("Login efetuado com sucesso!"),
-      error: () => this.toastService.error("Erro não esperado! Tente novamente!")
-    })
+  ngOnInit() {
+    this.buttonService.setSignupText();
   }
 
-  onNavigate() {
-    this.router.navigate(["login"]);
+  handleSubmit() {
+    if(this.signupForm.valid){
+      const { name, email, password } = this.signupForm.value;
+
+      this.signupService.signup(name!, email!, password!).subscribe({
+        next: () => {
+          this.toastService.success('Cadastro realizado com sucesso!');
+          this.router.navigate(['/home']);
+        },
+        error: () => {
+          this.toastService.error('Erro ao cadastrar. Tente novamente mais tarde!')
+        }
+      });
+
+    } else{
+      this.toastService.warning('Preencha todos os campos corretamente!');
+    }
+  }
+
+  handleNavigate() {
+    const route = this.buttonService.navigateRouteSubject.getValue();
+      this.router.navigate([route]);
   }
 }
