@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, computed, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonService } from '../../../services/ui/button.service';
 
 @Component({
@@ -16,24 +16,15 @@ export class ButtonComponent {
   @Output("submit") clickEvent = new EventEmitter();
   @Output("navigate") navigateEvent = new EventEmitter();
 
-  text: string = '';
 
   constructor(private buttonService: ButtonService){}
 
-  ngOnInit(){
-    if(this.type === 'primary'){
-      this.buttonService.primaryText$.subscribe(text => {
-        this.text = text;
-      });
-    } else {
-      this.buttonService.secondaryText$.subscribe(text => {
-        this.text = text;
-      })
-    }
-  }
+  text = computed(() =>
+  this.type === 'primary' ? this.buttonService.primaryText() : this.buttonService.secondaryText()
+  );
 
   handleClick(){
-    if(this.type === 'primary'){ 
+    if(this.type === 'primary'){
       this.clickEvent.emit();
     } else{
       console.log('botao navigate clicado');

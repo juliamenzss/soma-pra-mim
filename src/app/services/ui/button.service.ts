@@ -1,30 +1,24 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ButtonService {
 
-  private primaryTextSubject = new BehaviorSubject<string>('Entrar');
-  primaryText$ = this.primaryTextSubject.asObservable();
-
-  private secondaryTextSubject = new BehaviorSubject<string>('Criar conta');
-  secondaryText$ = this.secondaryTextSubject.asObservable();
-
-  navigateRouteSubject = new BehaviorSubject<string>('signup');
-  navigateRoute$ = this.navigateRouteSubject.asObservable();
+  primaryText = signal<string>('Entrar');
+  secondaryText = signal<string>('Criar conta')
+  navigateRoute = signal<string>('signup')
 
 
   setLoginText(){
-    this.primaryTextSubject.next('Entrar');
-    this.secondaryTextSubject.next('Criar conta');
-    this.navigateRouteSubject.next('signup');
+    this.primaryText.set('Entrar');
+    this.secondaryText.set('Criar conta');
+    this.navigateRoute.set('signup');
   }
 
   setSignupText(){
-    this.primaryTextSubject.next('Criar conta');
-    this.secondaryTextSubject.next('Entrar em sua conta');
-    this.navigateRouteSubject.next('login');
+    this.primaryText.set('Criar conta');
+    this.secondaryText.set('Entrar em sua conta');
+    this.navigateRoute.set('login');
   }
 }

@@ -51,7 +51,7 @@ export class LoginComponent {
   }
 
   handleNavigate() {
-    const route = this.buttonService.navigateRouteSubject.getValue();
+    const route = this.buttonService.navigateRoute();
     this.router.navigate([route]);
   }
 }
