@@ -1,0 +1,15 @@
+<ul>
+  @for (item of items$ | async; track item) {
+    <li>
+      @defer (on immediate) {
+        <app-card></app-card>
+      }
+    </li>
+  } @empty {
+    <li>
+      @defer (on immediate) {
+        <app-no-items></app-no-items>
+      }
+    </li>
+  }
+</ul>
