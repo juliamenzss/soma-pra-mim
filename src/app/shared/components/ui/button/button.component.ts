@@ -10,12 +10,13 @@ import { ButtonService } from '../../../services/ui/button.service';
 })
 export class ButtonComponent {
   // @Input() text: string = "Botão";
-  @Input() type: 'primary' | 'secondary' = 'primary';
+  @Input() buttonType: 'primary' | 'secondary' = 'primary';
+  @Input() nativeType: 'button' | 'submit' | 'reset' = 'button';
   @Input() size: 'small' | 'large' = 'small';
-  @Input() disablePrimaryBtn: boolean = true;
+  @Input() disablePrimaryBtn: boolean = false;
   @Input() text: string = '';
 
-  @Output("submit") clickEvent = new EventEmitter();
+  @Output("submit") submitEvent = new EventEmitter();
   @Output("navigate") navigateEvent = new EventEmitter();
 
   primaryText: string = '';
@@ -28,11 +29,16 @@ export class ButtonComponent {
     this.secondaryText = this.buttonService.secondaryText();
     }
 
-  handleClick(){
-    if(this.type === 'primary'){
-      this.clickEvent.emit();
-    } else{
-      this.navigateEvent.emit();
+    handleClick(event: Event) {
+      if (this.nativeType === 'submit') {
+        return;
+      }
+
+      event.preventDefault();
+      if (this.buttonType === 'primary') {
+        this.submitEvent.emit();
+      } else {
+        this.navigateEvent.emit();
+      }
     }
-  }
 }

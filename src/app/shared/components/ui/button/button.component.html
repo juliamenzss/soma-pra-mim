@@ -1,8 +1,9 @@
 <button
   data-testid="button-default"
   class="btn"
-  (click)="handleClick()"
+  [type]="nativeType"
+  (click)="handleClick($event)"
   [disabled]="disablePrimaryBtn"
-  [ngClass]="['btn-' + type, 'btn-' + size]">
+  [ngClass]="['btn-' + buttonType, 'btn-' + size]">
   {{ text }}
 </button>
