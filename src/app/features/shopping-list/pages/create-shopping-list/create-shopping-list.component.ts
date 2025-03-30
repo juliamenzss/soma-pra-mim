@@ -7,6 +7,8 @@ import { ShoppingListService } from '../../../../shared/services/shopping-list.s
 import { ButtonService } from '../../../../shared/services/ui/button.service';
 import { ToastrService } from 'ngx-toastr';
 import { ShoppingListPayload } from '../../../../shared/interfaces/shopping-list/payload-shoppingList.interface';
+import { ButtonComponent } from "../../../../shared/components/ui/button/button.component";
+import { take } from 'rxjs';
 
 interface ShoppingListForm {
   budget: FormControl,
@@ -16,7 +18,7 @@ interface ShoppingListForm {
 
 @Component({
   selector: 'app-create-shopping-list',
-  imports: [DefaultCreateSLLayoutComponent, ReactiveFormsModule],
+  imports: [DefaultCreateSLLayoutComponent, ReactiveFormsModule, PrimaryInputComponent, ButtonComponent],
   templateUrl: './create-shopping-list.component.html',
   styleUrl: './create-shopping-list.component.scss'
 })
@@ -28,39 +30,43 @@ export class CreateShoppingListComponent {
     private shoppingListService: ShoppingListService,
     public buttonService: ButtonService,
     private toastService: ToastrService,
-  ) {
-    this.shoppingListForm = new FormGroup({
-      budget: new FormControl('', [Validators.required]),
-      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      marketName: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    });
+  ) {}
 
+  ngOnInit() {
+        this.buttonService.setText('Criar Lista', 'Voltar', '/');
+        this.shoppingListForm = new FormGroup({
+          budget: new FormControl<number>(0, [Validators.required]),
+          name: new FormControl<string>('', [Validators.required, Validators.minLength(3)]),
+          marketName: new FormControl<string>('', [Validators.required, Validators.minLength(3)]),
+        });
   }
 
+  handleSubmit(event: Event) {
+    event.preventDefault();
+    if(this.shoppingListForm.invalid) {
+      this.toastService.warning("Preencha todos os campos corretamente");
+      return;
+    }
 
-
-
-  handleSubmit() {
     if(this.shoppingListForm.valid){
       const payload: ShoppingListPayload = {
         name: this.shoppingListForm.value.name ?? "",
         marketName: this.shoppingListForm.value.marketName ?? "",
         budget: this.shoppingListForm.value.budget ?? 0,
-
-        totalPrice: 0, shoppingItem: []
+        totalPrice: 0, shoppingItem: [],
+        userId: 2
       };
 
-      this.shoppingListService.createShoppingList(payload).subscribe({next: (shoppingList) => {
-        this.router.navigate([`/shopping-list/${shoppingList.id}`]);
-        error: () => {
-          this.toastService.error("Erro ao criar a lista. Tente novamente.");
-        }
-        }})
+      this.shoppingListService.createShoppingList(payload).pipe(take(1)).subscribe(
+        {
+        next: (shoppingList) => {this.router.navigate([`/shopping-list/${shoppingList.id}`])
+      },
+        error: () => {this.toastService.error("Erro ao criar a lista. Tente novamente.")}
+        });
     }
   }
 
   handleNavigate() {
-    console.log('Navigate clicado')
     this.router.navigate(['/']);
   }
 }

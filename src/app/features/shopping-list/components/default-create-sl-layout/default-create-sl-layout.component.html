@@ -4,24 +4,6 @@
   <section class="form-section">
   <h2>{{ title }}</h2>
     <ng-content></ng-content>
-
-  <app-button
-  style="padding: 8px 0;"
-  type="secondary"
-  size="small"
-  (navigate)="handleNavigate()"
-  [text]="buttonService.secondaryText()"
-  [disablePrimaryBtn]="false"
-  >
-</app-button>
-
-<app-button
-type="primary"
-size="small"
-(submit)="handleSubmit()"
-[text]="buttonService.primaryText()"
-[disablePrimaryBtn]="disablePrimaryBtn"
-  ></app-button>
 </section>
 </main>
 </div>
