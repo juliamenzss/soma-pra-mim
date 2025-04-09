@@ -1,15 +1,22 @@
-<ul>
-  @for (item of items$ | async; track item) {
-    <li>
-      @defer (on immediate) {
-        <app-card></app-card>
-      }
-    </li>
-  } @empty {
-    <li>
-      @defer (on immediate) {
-        <app-no-items></app-no-items>
-      }
-    </li>
-  }
-</ul>
+<section class="container">
+  <ul>
+    @for (item of (items$ | async)?.slice()?.reverse(); track item.id){
+      <li>
+        @defer (on immediate) {
+          <app-card
+            [name]="item.name"
+            [price]="item.price"
+            [quantity]="item.quantity"
+            (deleteItem)="onDeletarItem(item.id)"
+          ></app-card>
+        }
+      </li>
+    } @empty {
+      <li>
+        @defer (on immediate) {
+          <app-no-items></app-no-items>
+        }
+      </li>
+    }
+  </ul>
+</section>

@@ -1,15 +1,17 @@
 import { ShoppingItem } from "../shopping-item/shoppingItem.interface";
 
 export interface ShoppingList {
-  id: number;
+  id: string;
   name: string;
   marketName: string;
   budget: number;
-  totalPrice: number;
-  shoppingItem: ShoppingItem[];
+  totalPrice?: number;
+  totalItems?: number;
+  shoppingItem?: ShoppingItem[];
+  userId: string
 }
 
 export interface shoppingListResponse extends ShoppingList{
-  
+
 }
 

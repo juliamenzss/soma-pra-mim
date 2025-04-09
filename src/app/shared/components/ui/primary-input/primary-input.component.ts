@@ -24,18 +24,18 @@ export class PrimaryInputComponent implements ControlValueAccessor {
   @Input() type: InputTypes = "text";
   @Input() placeholder: string = "";
   @Input() label: string = "";
-  @Input() inputName: string = ""; //nome do input p/ acessibilidade
+  @Input() inputName: string = "";
 
-  value: string = '' //valor inicial do input
-  onChange: any = () => {}; //func quando o valor muda
-  onTouched: any = () => {}; //func quando o usuario interage com o input
+  value: string = '';
+  onChange: any = () => {};
+  onTouched: any = () => {}
 
   onInput(event: Event){
     const value = (event.target as HTMLInputElement).value
-    this.onChange(value) // metodo atualiza o valor e informa o angular
+    this.onChange(value)
   }
   writeValue(value: any): void {
-    this.value = value // preenche input autm se ja tiver valor
+    this.value = value 
   }
 
   registerOnChange(fn: any): void {

@@ -1,6 +1,25 @@
-<input (ngModel)="productName" placeholder="Nome do Produto">
-<input (ngModel)="productPrice" type="number" placeholder="R$10.00">
-<input (ngModel)="quantity" type="number" placeholder="1">
-<button (click)="addProduct()">Adicionar Produto</button>
+<main>
+  <section class="container">
+  <div class="budget">
+    <h3 class="budgetStringValue">Orçamento</h3>
+    <h3 class="budgetValue">{{ budget }}</h3>
+  </div>
+<app-add-item-form
+[shoppingListId]="shoppingListId"
+(itemCreated)="onItemCreated()">
 
-<app-list-item></app-list-item>
+</app-add-item-form>
+  <app-list-item
+  (deletar)="onDeletarList($event)">
+  </app-list-item>
+
+</section>
+<section style="background-color: rgb(163, 163, 160); width: 400px;">
+  <div>
+    <h2>Total de items: </h2>
+    <span>{{ totalItems }}</span>
+  </div>
+  <h2>Total Price: {{ totalPrice }}</h2>
+</section>
+</main>
+

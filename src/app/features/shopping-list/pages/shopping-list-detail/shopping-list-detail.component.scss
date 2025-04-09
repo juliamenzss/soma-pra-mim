@@ -1,0 +1,43 @@
+@import "../../../../../styles/variables.scss";
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: beige;
+
+  .budget{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: $primary-color;
+    padding: 28px 24px;
+    width: 600px;
+
+    .budgetStringValue{
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .budgetValue{
+      display: flex;
+      justify-content: center;
+      color: $text-color;
+      font-size: 28px;
+      font-weight: bold;
+      background-color: white;
+      width: 100px;
+      border-radius: 18px;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 600px;
+  background-color: $secondary-gray-color;
+
+}

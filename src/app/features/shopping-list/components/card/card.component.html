@@ -1,7 +1,14 @@
-<nz-card style="width:300px; padding: 0;">
-  <p>{{ productName }}</p>
-  <p>{{ productPrice | currency: 'R$' }}</p>
-  <p>{{ quantity }}</p>
-</nz-card>
+  <section class="container">
+    <div class="container-child">
+      <p class="name">{{ name }}</p>
+      <span class="price">
+        <p>{{ price | currency: 'R$ ' }}</p>
+      </span>
+      <p class="quantity">{{ quantity }} uni</p>
+      <nz-icon nzType="delete" nzTheme="outline" class="delete-icon" style="cursor: pointer;" (click)="deleteProduct()"></nz-icon>
+    </div>
+  </section>
+
+
 
 

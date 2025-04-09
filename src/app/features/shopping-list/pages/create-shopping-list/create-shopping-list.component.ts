@@ -53,8 +53,8 @@ export class CreateShoppingListComponent {
         name: this.shoppingListForm.value.name ?? "",
         marketName: this.shoppingListForm.value.marketName ?? "",
         budget: this.shoppingListForm.value.budget ?? 0,
-        totalPrice: 0, shoppingItem: [],
-        userId: 2
+        shoppingItem: [],
+        userId: "2"
       };
 
       this.shoppingListService.createShoppingList(payload).pipe(take(1)).subscribe(
