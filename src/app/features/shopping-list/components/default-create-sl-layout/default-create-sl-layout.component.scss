@@ -18,9 +18,13 @@ main{
   align-items: center;
   justify-content: center;
   width: 450px;
-  height: 350px;
+  height: 390px;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+h2{
+  color: $text-color;
+  padding-bottom: 8px;
 }
 
 .form-section{
