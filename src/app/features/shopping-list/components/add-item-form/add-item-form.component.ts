@@ -25,51 +25,46 @@ export class AddItemFormComponent {
   @Output() itemCreated = new EventEmitter<void>();
 
 
-createItemForm!: FormGroup<CreateItemForm>;
+  createItemForm!: FormGroup<CreateItemForm>;
 
-constructor(
-  private shoppingListService: ShoppingListService,
-  private toastService: ToastrService,
-  private fb: FormBuilder
-) { }
-
-
-ngOnInit(){
-  this.createItemForm = this.fb.group({
-    name:['',[Validators.required, Validators.minLength(3)]],
-    price:[Validators.required],
-    quantity: [Validators.required],
-  });
-}
+  constructor(
+    private shoppingListService: ShoppingListService,
+    private toastService: ToastrService,
+    private fb: FormBuilder
+  ) { }
 
 
-handleSubmit(event: Event){
-event.preventDefault();
-
-if(this.createItemForm.invalid){
-    this.toastService.warning("Preencha todos os campos corretamente");
-    return;
-}
-
-
-
-const payload: ShoppingItemPayload = {
-  name: this.createItemForm.value.name ?? '',
-  price: this.createItemForm.value.price ?? 0,
-  quantity: this.createItemForm.value.quantity ?? 0,
-  shoppingListId: this.shoppingListId
-};
-
-  const newProduct: ShoppingItem = {
-    id: 0,
-    ...payload
-  };
-  this.shoppingListService
-  .createItem(newProduct, this.shoppingListId)
-  .pipe(take(1))
-  .subscribe(() => {
-    this.createItemForm.reset()});
-    this.itemCreated.emit();
-    }
+  ngOnInit() {
+    this.createItemForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      price: [Validators.required],
+      quantity: [Validators.required],
+    });
   }
+
+
+  handleSubmit(event: Event) {
+    event.preventDefault();
+
+    const payload: ShoppingItemPayload = {
+      name: this.createItemForm.value.name ?? '',
+      price: this.createItemForm.value.price ?? 0,
+      quantity: this.createItemForm.value.quantity ?? 0,
+      shoppingListId: this.shoppingListId
+    };
+
+    if (this.createItemForm.invalid) {
+      this.toastService.warning("Preencha todos os campos corretamente");
+      return;
+    }
+
+    this.shoppingListService
+      .createItem(payload, this.shoppingListId)
+      .pipe(take(1))
+      .subscribe(() => {
+        this.createItemForm.reset()
+        this.itemCreated.emit();
+      });
+  }
+}
 

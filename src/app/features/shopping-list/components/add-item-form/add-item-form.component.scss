@@ -1,10 +1,11 @@
 @import "../../../../../styles/variables.scss";
 
 .add-product-form {
-  padding: 16px 24px;
+  padding: 12px 24px;
   display: flex;
   justify-content: start;
   align-items: center;
+  height: 75px;
 
   form {
     display: flex;
@@ -18,7 +19,7 @@
       flex-direction: column;
 
       label {
-        font-size: 12px;
+        font-size: 14px;
         color: #333;
         margin-bottom: 4px;
         padding-left: 6px;
@@ -53,8 +54,10 @@
       font-weight: 500;
 
       &:hover {
-        background-color: $primary-color;
-        color: rgb(46, 45, 45)
+        background-color: $secondary-gray-color;
+        transform: translateY(-1px);
+        color: $secondary-color;
+        border: 0.5px solid $secondary-color
       }
     }
   }
