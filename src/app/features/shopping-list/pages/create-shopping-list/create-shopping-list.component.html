@@ -4,31 +4,37 @@ title="Crie sua lista agora"
 >
 
 <form [formGroup]="shoppingListForm" (ngSubmit)="handleSubmit($event)">
-  <app-primary-input
-  formControlName="name"
-  inputName="nome da lista"
-  placeholder="Digite o nome da lista"
-  type="text"
-  label="Nome da Lista">
+  <div class="input">
+    <app-primary-input
+    formControlName="name"
+    inputName="nome da lista"
+    placeholder="Digite o nome da lista"
+    type="text"
+    label="Nome da Lista"
+    style="padding: 8px 0;">
+    </app-primary-input>
+
+    <app-primary-input
+    formControlName="marketName"
+    inputName="marketName"
+    placeholder="Nome do Mercado"
+    label="Mercado">
   </app-primary-input>
 
   <app-primary-input
-  formControlName="marketName"
-  inputName="marketName"
-  placeholder="Nome do Mercado"
-  label="Mercado">
-</app-primary-input>
+    formControlName="budget"
+    inputName="expectedExpense"
+    placeholder="R$ 100.00"
+    type="text"
+    label="Despesa Estimada"
+  >
 
-<app-primary-input
-  formControlName="budget"
-  inputName="expectedExpense"
-  placeholder="Despesa Estimada"
-  type="text"
-  label="Despesa Estimada">
-</app-primary-input>
+  </app-primary-input>
+  </div>
 
+<div class="button">
   <app-button
-  style="padding: 20px 46px;"
+  style="padding: 20px 24px;"
   buttonType="secondary"
   size="small"
   (navigate)="handleNavigate()"
@@ -45,6 +51,7 @@ nativeType="submit"
 [text]="buttonService.primaryText()"
 [disablePrimaryBtn]="false"
   ></app-button>
+</div>
 </form>
 </app-default-create-sl-layout>
 
