@@ -7,19 +7,15 @@
 <app-add-item-form
 [shoppingListId]="shoppingListId"
 (itemCreated)="onItemCreated()">
-
 </app-add-item-form>
+
   <app-list-item
   (deletar)="onDeletarList($event)">
   </app-list-item>
 
 </section>
-<section style="background-color: rgb(163, 163, 160); width: 400px;">
-  <div>
-    <h2>Total de items: </h2>
-    <span>{{ totalItems }}</span>
-  </div>
-  <h2>Total Price: {{ totalPrice }}</h2>
-</section>
+<app-cart-summary
+[totalItems]="totalItems"
+[totalPrice]="totalPrice"></app-cart-summary>
 </main>
 
