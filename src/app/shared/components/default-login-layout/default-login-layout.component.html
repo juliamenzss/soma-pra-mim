@@ -3,7 +3,7 @@
 
     <div (click)="handleNavigateHome()" class="container-arrow">
       <span class="arrow">
-        <img style="width: 24px;" src="/assets/svg/arrow.svg"/>
+        <img style="width: 24px;" src="/assets/svg/arrow.svg" />
       </span>
     </div>
     <h2>{{ title }}</h2>
@@ -11,14 +11,9 @@
     <ng-content></ng-content>
 
     <div class="btn-wrapper">
-      <app-button
-      type="primary"
-      size="large"
-      (submit)="handlePrimaryCLick()"
-      [text]="buttonService.primaryText()"
-      [disablePrimaryBtn]="disablePrimaryBtn"
-      >
-    </app-button>
+      <app-button buttonType="primary" size="large" (navigate)="handlePrimaryCLick()"
+        [text]="buttonService.primaryText()" [disablePrimaryBtn]="disablePrimaryBtn">
+      </app-button>
     </div>
     <div class="divider">
       <div></div>
@@ -27,17 +22,12 @@
     </div>
     <div class="btn-wrapper">
 
-    <app-button
-    type="secondary"
-    size="large"
-    [disablePrimaryBtn]="false"
-    [text]="buttonService.secondaryText()"
-    (navigate)="handleSecondaryCLick()"
-    >
-  </app-button>
-  </div>
+      <app-button buttonType="secondary" size="large" (navigate)="handleSecondaryCLick()"
+        [text]="buttonService.secondaryText()" [disablePrimaryBtn]="false">
+      </app-button>
+    </div>
   </section>
   <section class="main-section">
-    <img style="width: 700px; margin: 92px 0;" src="/assets/svg/login-illustration.svg"/>
+    <img style="width: 700px; margin: 92px 0;" src="/assets/svg/login-illustration.svg" />
   </section>
 </main>

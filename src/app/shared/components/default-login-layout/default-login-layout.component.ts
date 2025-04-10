@@ -11,7 +11,7 @@ import { ButtonService } from '../../services/ui/button.service';
 })
 export class DefaultLoginLayoutComponent {
 
-  constructor(private router: Router, public buttonService: ButtonService){}
+  constructor(private router: Router, public buttonService: ButtonService) { }
   @Input() title: string = "";
   @Input() subtitle: string = "";
   @Input() disablePrimaryBtn: boolean = true;
@@ -22,7 +22,7 @@ export class DefaultLoginLayoutComponent {
   @Output("navigateHome") navigateHome = new EventEmitter();
 
 
-  handleNavigateHome(){
+  handleNavigateHome() {
     this.router.navigate(['/']);
   }
 
