@@ -2,9 +2,11 @@
     <div class="container-child">
       <p class="name">{{ name }}</p>
       <span class="price">
-        <p>{{ price | currency: 'R$ ' }}</p>
+        <p>preço uni {{ price | currency: 'R$ ' }}</p>
       </span>
       <p class="quantity">{{ quantity }} uni</p>
+      <p class="total">total {{ price * quantity | currency: 'R$' }}</p>
+
       <nz-icon nzType="delete" nzTheme="outline" class="delete-icon" style="cursor: pointer;" (click)="deleteProduct()"></nz-icon>
     </div>
   </section>
