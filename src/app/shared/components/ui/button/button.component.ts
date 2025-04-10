@@ -9,7 +9,6 @@ import { ButtonService } from '../../../services/ui/button.service';
   styleUrl: './button.component.scss'
 })
 export class ButtonComponent {
-  // @Input() text: string = "Botão";
   @Input() buttonType: 'primary' | 'secondary' = 'primary';
   @Input() nativeType: 'button' | 'submit' | 'reset' = 'button';
   @Input() size: 'small' | 'large' = 'small';
