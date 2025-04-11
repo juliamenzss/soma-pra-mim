@@ -1,0 +1,15 @@
+ul{
+  list-style: none;
+  max-height: 380px;
+  overflow-y: auto;
+}
+li{
+  padding: 8px 0;
+}
+.container {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 385px;
+}

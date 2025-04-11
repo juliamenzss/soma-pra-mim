@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, input, Output } from '@angular/core';
-import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { NoItemsComponent } from "../no-items/no-items.component";
 import { CardComponent } from "../card/card.component";
 import { Observable } from 'rxjs';
