@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ListItemComponent } from '../../components/list-item/list-item.component';
 import { ShoppingListService } from '../../../../shared/services/shopping-list.service';
 import { CommonModule } from '@angular/common';
@@ -40,28 +39,28 @@ export class ShoppingListDetailComponent implements OnInit {
     private fb: FormBuilder,
   ) { }
 
-export class ShoppingListDetailComponent implements OnInit {
-  createItemForm!: FormGroup<CreateItemForm>
-  totalItems: number = 0;
-  totalPrice: number = 0;
-  budget: number = 0;
-  items!: ShoppingItem[];
+// export class ShoppingListDetailComponent implements OnInit {
+//   createItemForm!: FormGroup<CreateItemForm>
+//   totalItems: number = 0;
+//   totalPrice: number = 0;
+//   budget: number = 0;
+//   items!: ShoppingItem[];
 
-  constructor(
-    private shoppingListService: ShoppingListService,
-    public buttonService: ButtonService,
-    private toastService: ToastrService,
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
-  ) { }
+//   constructor(
+//     private shoppingListService: ShoppingListService,
+//     public buttonService: ButtonService,
+//     private toastService: ToastrService,
+//     private route: ActivatedRoute,
+//     private fb: FormBuilder,
+//   ) { }
 
   items$!: Observable<ShoppingItem[]>;
   shoppingListId!: number;
 
-  ngOnInit() {
-    var idRouter = this.route.snapshot.paramMap.get('id');
-    this.shoppingListId = Number(idRouter);
-  shoppingListId!: number;
+  // ngOnInit() {
+  //   var idRouter = this.route.snapshot.paramMap.get('id');
+  //   this.shoppingListId = Number(idRouter);
+  // shoppingListId!: number;
 
   ngOnInit() {
     var idRouter = this.route.snapshot.paramMap.get('id');

@@ -23,6 +23,7 @@ interface CreateItemForm {
 export class AddItemFormComponent {
   @Input() shoppingListId!: number;
   @Output() itemCreated = new EventEmitter<void>();
+  @Input() budget!: number;
 
 
   createItemForm!: FormGroup<CreateItemForm>;

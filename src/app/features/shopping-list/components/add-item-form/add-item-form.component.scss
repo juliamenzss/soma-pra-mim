@@ -22,13 +22,13 @@
         font-size: 14px;
         color: #333;
         margin-bottom: 4px;
-        padding-left: 6px;
+        padding-left: 4px;
       }
 
       input {
         width: 140px;
-        height: 36px;
-        border-radius: 16px;
+        height: 40px;
+        border-radius: 14px;
         border: 0.8px solid #ccc;
         padding: 4px 8px;
         font-size: 12px;
@@ -44,7 +44,7 @@
     }
 
     button {
-      height: 36px;
+      height: 40px;
       padding: 0 12px;
       background-color: $secondary-color;
       color: rgb(243, 237, 237);

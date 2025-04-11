@@ -29,8 +29,5 @@ export class ListItemComponent {
     this.deletar.emit(id);
   }
 
-  onDeletarItem(id: number){
-    this.deletar.emit(id);
-  }
 }
 
